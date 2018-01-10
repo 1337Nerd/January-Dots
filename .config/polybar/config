@@ -1,0 +1,142 @@
+[colors]
+background = #0D0011
+foreground = #B3D5DA
+alt-foreground = #3C759E
+bordercolor = #2481E1
+
+[bar/main]
+monitor = LVDS-1
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-bottom-size = 2
+border-bottom-color = ${colors.bordercolor}
+
+height = 30
+padding-right = 1
+module-margin = 1
+
+font-0 = Iosevka Term:style=Regular:pixelsize=10;1
+font-1 = Wuncon Siji:style=Regular:pixelsize=10;1
+font-2 = FontAwesome5Free:style=Solid:pixelsize=9;3
+font-3 = Font Awesome 5 Brands:style=Regular:pixelsize=15;3
+
+modules-left = bspwm weather
+modules-center = date
+modules-right = vpn wifi memory cpu volume battery
+
+tray-position = right
+tray-transparent = false
+
+wm-restack = bspwm
+
+[module/bspwm]
+type = internal/bspwm
+
+enable-scroll = false
+ws-icon-default = o
+
+label-focused = %name%
+label-focused-background = ${colors.bordercolor}
+label-focused-foreground = #eee
+label-focused-padding = 2
+
+label-occupied = %name%
+label-occupied-padding = 2
+
+label-urgent = !
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+
+label-empty = 
+
+[module/weather]
+type = custom/script
+interval = 90
+exec =  python /home/josh/.config/polybar/test2
+label = "%output%"
+
+[module/date]
+type = internal/date
+label = %date%
+date = "%a, %B %d %I:%M:%S"
+
+[module/vpn]
+type = custom/script
+exec = pgrep openvpn
+label = vpn
+format-prefix = "%{T2} %{T-}"
+format-prefix-foreground = ${colors.alt-foreground}
+
+[module/wifi]
+type = internal/network
+interface = wlp2s0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %local_ip%
+
+ramp-signal-0 = "%{T2}%{T-}"
+ramp-signal-foreground = ${colors.alt-foreground}
+
+[module/memory]
+type = internal/memory
+label = %gb_used%
+format-prefix = "%{T2} %{T-}"
+format-prefix-foreground = ${colors.alt-foreground}
+
+[module/cpu]
+type = internal/cpu
+format-prefix = "%{T2} %{T-}"
+format-prefix-foreground = ${colors.alt-foreground}
+
+[module/volume]
+type=internal/volume
+format-volume = <ramp-volume><label-volume>
+
+label-muted = "%{T2}%{T-}"
+label-muted-foreground=${colors.alt-foreground}
+
+ramp-volume-0 = "%{T2}%{T-}"
+ramp-volume-1 = "%{T2}%{T-}"
+ramp-volume-foreground=${colors.alt-foreground}
+ramp-volume-padding = 1
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+
+format-charging =  <animation-charging> <label-charging>
+label-charging = %percentage%%
+
+format-discharging =  <ramp-capacity> <label-discharging>
+label-discharging = %percentage%%
+
+format-full = <ramp-capacity> <label-full>
+label-full = %percentage%%
+
+ramp-capacity-foreground = ${colors.alt-foreground}
+ramp-capacity-0 = "%{T2}%{T-}"
+ramp-capacity-1 = "%{T2}%{T-}"
+ramp-capacity-2 = "%{T2}%{T-}"
+ramp-capacity-3 = "%{T2}%{T-}"
+ramp-capacity-4 = "%{T2}%{T-}"
+ramp-capacity-5 = "%{T2}%{T-}"
+ramp-capacity-6 = "%{T2}%{T-}"
+ramp-capacity-7 = "%{T2}%{T-}"
+ramp-capacity-8 = "%{T2}%{T-}"
+
+animation-charging-0 = "%{T2}%{T-}"
+animation-charging-1 = "%{T2}%{T-}"
+animation-charging-2 = "%{T2}%{T-}"
+animation-charging-3 = "%{T2}%{T-}"
+animation-charging-4 = "%{T2}%{T-}"
+animation-charging-5 = "%{T2}%{T-}"
+animation-charging-6 = "%{T2}%{T-}"
+animation-charging-7 = "%{T2}%{T-}"
+
+animation-charging-foreground = ${colors.alt-foreground}
+animation-charging-framerate = 750
+
+; vim:ft=dosini
