@@ -1,0 +1,260 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+toolbarbutton#alltabs-button {
+	-moz-binding: url("userChrome.xml#js");
+}
+
+/* 
+Original layout by /u/Herkt https://www.reddit.com/r/FirefoxCSS/comments/7eazix/my_attempt_at_a_oneline_interface/ 
+Use with compact density
+*/
+
+:root:-moz-lwtheme-brighttext {                                      /* minor color changes to the default dark theme */
+  --color-overflow: #222;                                            /* >> button color */
+  --chrome-background-color: #222 !important;                        /* tab strip background & inactive tabs */
+  --chrome-secondary-background-color: #333 !important;              /* nav bar & active tab */
+  --chrome-color: #ccc !important;                                   /* url & tab text, close tab & new tab buttons */
+  background-color: #444 !important;                                 /* top border of out of focus window */
+}
+
+:root:-moz-lwtheme-darktext {                                        /* minor changes to the default light theme */
+  --color-overflow: #ddd;                                            /* >> button color */
+  --chrome-background-color: #ccc !important;                        /* tab strip background & inactive tabs */
+}
+
+:root {
+  --tabs-border: transparent !important;                             /* active tab left & right borders - not working in 58?*/
+  --toolbox-border-bottom-color: transparent !important;             /* 1px line under background tabs */
+  --chrome-nav-bar-controls-border-color: transparent !important;    /* border around url bar */
+}
+
+/* Move Tab-bar beside Nav-bar */
+#TabsToolbar {      
+  margin-bottom: 0px !important;                /* not needed anymore? */
+  margin-top: 0px !important;                   /*  */
+  margin-left: 35vw !important;
+  margin-right: -34px !important;
+}
+
+#nav-bar {      
+  margin-bottom: -1px !important;               /* remove navbar bottom 1px border */
+  margin-top: -32px !important;
+  margin-right: 65vw !important; 
+  border-top: none !important;
+}   
+
+/* Remove padding above tabbar in compact mode */
+#main-window[sizemode="normal"] > #titlebar {
+  -moz-appearance: initial !important;
+}
+
+
+/* Back & Forward buttons */  
+#back-button > .toolbarbutton-icon,
+#forward-button > .toolbarbutton-icon {
+  transform: scale(0.9, 0.9) !important;
+  margin-left: -2px !important;
+  margin-right: -2px !important; 
+}
+
+/* Move hamburger menu to the left */
+#PanelUI-button,
+#customization-panel-container,
+#customization-panelWrapper .panel-arrow { 
+  -moz-box-ordinal-group: 0 !important;
+  margin-right: -6px !important;
+}
+
+#appMenu-popup {
+  margin-right: -258px !important;
+}
+
+#appMenu-popup .panel-arrow {
+  margin-right: 248px !important;
+}
+
+/* More tools... button */
+#nav-bar-overflow-button { 
+  transform: scale(0.9, 0.9) !important;
+  fill: var(--color-overflow) !important;
+}  
+
+
+/* Tabs */
+.tabbrowser-tab {
+  height: 32px !important; 
+}
+
+/* Remove empty space before first tab
+Delete this rule if you need a space to drag the window*/
+#TabsToolbar .titlebar-placeholder[type="pre-tabs"]{
+    display: none !important;
+}
+
+/* Remove border between tabs
+Delete this rule if you want separators between background tabs */
+.tabbrowser-tab::after, .tabbrowser-tab::before {
+  border-left: none !important;
+} 
+
+/* Border between background tabs */
+.tabbrowser-tab::after, .tabbrowser-tab::before {
+  color: grey !important; 
+  opacity: .2 !important; 
+ }
+
+/* New tab button color */
+#new-tab-button, .tabs-newtab-button {
+  fill: var(--chrome-color) !important;
+  } 
+
+/* tab line - adjust color & size, default #0a84ff 2px */
+.tab-line {
+  background-color: #0a84ff !important;
+  height: 0px !important;
+  }
+
+
+/* Hide various elements */
+/* Menu */
+#appMenu-fxa-container,                    /* Sign in to Sync */
+#appMenu-fxa-container+toolbarseparator,
+/* #appMenuRestoreLastSession, */
+#appMenu-zoom-controls,
+#appMenu-zoom-controls+toolbarseparator,
+#appMenu-edit-controls,
+#appMenu-edit-controls+toolbarseparator,
+#appMenu-library-button,
+#appMenu-customize-button,
+#appMenu-customize-button+toolbarseparator,
+#appMenu-open-file-button,
+#appMenu-save-file-button,
+#appMenu-find-button,
+#appMenu-more-button,
+
+/* URL Bar */
+#pageActionButton,
+#pocket-button-box,
+ar-button,
+.autocomplete-history-dropmarker,
+#identity-icon-labels
+{
+    display: none !important;
+}
+
+    /*Disable White Flash of Death*/
+browser[type="content-primary"], tabbrowser tabpanels, #appcontent > #content {
+    background-color: var(--ui-basecolor) !important;
+}
+
+#back-button {
+   display: none !important;
+}
+#forward-button {
+   display: none !important;
+}
+
+/*
+ * Originally from:
+ * http://forums.mozillazine.org/viewtopic.php?p=14404121#p14404121
+ */
+
+#urlbar {
+  position: relative;
+  z-index: 1;
+}
+
+#urlbar-container {
+    margin-left: 4px !important;
+}
+
+#identity-box:after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: white;
+  opacity: 0.2;
+}
+
+
+/* There is also grantedPermissions, but irrelevant. */
+
+/* about:about */
+#urlbar[pageproxystate='valid'] #identity-box.unknownIdentity:after {
+  background: #ff0039; /* Firefox Red 50 */
+}
+
+/* about:config */
+#urlbar[pageproxystate='valid'] #identity-box.chromeUI:after {
+  background: #0a84ff; /* Firefox Blue 50 */
+}
+
+/* uBlock Origin Dashboard */
+#urlbar[pageproxystate='valid'] #identity-box.extensionPage:after {
+  background: #45a1ff; /* Firefox Blue 40 */
+}
+
+/* https://www.github.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.verifiedIdentity:after{
+  background: #058b00; /* Firefox Green 70 */
+}
+
+/* https://www.google.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.verifiedDomain:after{
+  background: #12bc00; /* Firefox Green 60 */
+}
+
+/* https://mixed-script.badssl.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.mixedActiveBlocked:after {
+  background: #30e60b; /* Firefox Green 50 */
+}
+
+/* https://mixed.badssl.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContent:after {
+  background: #d7b600; /* Firefox Yellow 60 */
+}
+
+/* https://very.badssl.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContentLoadedActiveBlocked:after {
+  background: #d7b600; /* Firefox Yellow 60 */
+}
+
+/* https://self-signed.badssl.com/ but add certificate exception */
+#urlbar[pageproxystate='valid'] #identity-box.certUserOverridden:after {
+  background: #ffe900; /* Firefox Yellow 50 */
+}
+
+/* Don't know an example for this */
+#urlbar[pageproxystate='valid'] #identity-box.weakCipher:after {
+  background: #a47f00; /* Firefox Yellow 70 */
+}
+
+/* https://mixed-script.badssl.com/ but disable protection */
+#urlbar[pageproxystate='valid'] #identity-box.mixedActiveContent:after {
+  background: #d70022;  /* Firefox Red 60 */
+}
+
+/* http://http-login.badssl.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.insecureLoginForms:after {
+  background: #a4000f;  /* Firefox Red 70 */
+}
+
+/* Hide Hamburger Button */
+#PanelUI-menu-button {
+    visibility: collapse !important;
+}
+
+/* Hide Close Button !=hover */
+.tabbrowser-tab:not([pinned]):not(:hover) .tab-close-button { visibility: collapse !important; }
+.tabbrowser-tab:not([pinned]):hover .tab-close-button { visibility: visible !important; display: block !important; }
+
+input:not(.urlbar-input):not(.form-control):not([type='checkbox']):not([type='radio']), textbox-input, textarea, select {
+    -moz-appearance: none !important;
+    background-color: white;
+    color: black;
+}
