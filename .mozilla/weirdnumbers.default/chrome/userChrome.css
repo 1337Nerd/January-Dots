@@ -3,7 +3,6 @@
 toolbarbutton#alltabs-button {
 	-moz-binding: url("userChrome.xml#js");
 }
-
 /* 
 Original layout by /u/Herkt https://www.reddit.com/r/FirefoxCSS/comments/7eazix/my_attempt_at_a_oneline_interface/ 
 Use with compact density
