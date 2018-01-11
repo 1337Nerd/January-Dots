@@ -1,0 +1,51 @@
+! special
+*.foreground:   #b3d5da
+*.background:   #14051a
+
+! black
+*.color0:       #262626
+*.color8:       #262626
+
+! red
+*.color1:       #cf4134
+*.color9:       #cf4134
+
+! green
+*.color2:       #79e513
+*.color10:      #79e513
+
+! yellow
+*.color3:       #edf630
+*.color11:      #edf630
+
+! blue
+*.color4:       #49bbfb
+*.color12:      #49bbfb
+
+! magenta
+*.color5:       #cb1ed1
+*.color13:      #fd28ff
+
+! cyan
+*.color6:       #0dcdcd
+*.color14:      #14ffff
+
+! white
+*.color7:       #c7c7c7
+*.color15:      #c7c7c7
+
+!############
+!##  rofi  ##
+!############
+
+!                  bg       border   separator
+rofi.color-window: #14051a, #14051a, #14051a
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #14051a, #b3d5da, #14051a, #14051a, #ffffff
+rofi.color-active: #14051a, #b3d5da, #14051a, #14051a, #ffffff
+rofi.color-urgent: #14051a, #b3d5da, #14051a, #14051a, #ffffff
+
+rofi.lines: 		  	5
+rofi.font: 			  	Iosevka 15
+rofi.padding: 			5
+rofi.fixed-num-lines: 	false
