@@ -1,6 +1,6 @@
 [colors]
-background = #0D0011
-foreground = #B3D5DA
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
 alt-foreground = #3C759E
 bordercolor = #2481E1
 
@@ -27,7 +27,6 @@ modules-center = date
 modules-right = vpn wifi memory cpu volume battery
 
 tray-position = right
-tray-transparent = false
 
 wm-restack = bspwm
 
@@ -91,16 +90,17 @@ format-prefix = "%{T2} %{T-}"
 format-prefix-foreground = ${colors.alt-foreground}
 
 [module/volume]
-type=internal/volume
+type= internal/volume
 format-volume = <ramp-volume><label-volume>
 
-label-muted = "%{T2}%{T-}"
+label-muted = "%{T2}%{T-}"
 label-muted-foreground=${colors.alt-foreground}
 
-ramp-volume-0 = "%{T2}%{T-}"
-ramp-volume-1 = "%{T2}%{T-}"
+ramp-volume-0 = "%{T2}%{T-}"
+ramp-volume-1 = "%{T2}%{T-}"
+ramp-volume-2 = "%{T2}%{T-}"
 ramp-volume-foreground=${colors.alt-foreground}
-ramp-volume-padding = 1
+ramp-volume-padding-right = 1
 
 [module/battery]
 type = internal/battery
@@ -137,6 +137,6 @@ animation-charging-6 = "%{T2}%{T-}"
 animation-charging-7 = "%{T2}%{T-}"
 
 animation-charging-foreground = ${colors.alt-foreground}
-animation-charging-framerate = 750
+animation-charging-framerate = 250
 
 ; vim:ft=dosini
