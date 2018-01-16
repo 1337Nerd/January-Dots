@@ -54,7 +54,6 @@ label-empty =
 type = custom/script
 interval = 90
 exec =  python /home/josh/.config/polybar/test2
-label = "%output%"
 
 [module/date]
 type = internal/date
@@ -94,13 +93,12 @@ type= internal/volume
 format-volume = <ramp-volume><label-volume>
 
 label-muted = "%{T2}%{T-}"
-label-muted-foreground=${colors.alt-foreground}
+label-muted-foreground = ${colors.alt-foreground}
 
-ramp-volume-0 = "%{T2}%{T-}"
-ramp-volume-1 = "%{T2}%{T-}"
-ramp-volume-2 = "%{T2}%{T-}"
-ramp-volume-foreground=${colors.alt-foreground}
-ramp-volume-padding-right = 1
+ramp-volume-0 = "%{T2} %{T-}"
+ramp-volume-1 = "%{T2} %{T-}"
+ramp-volume-2 = "%{T2} %{T-}"
+ramp-volume-foreground = ${colors.alt-foreground}
 
 [module/battery]
 type = internal/battery
