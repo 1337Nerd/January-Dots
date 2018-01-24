@@ -1,7 +1,7 @@
 [colors]
 background = ${xrdb:background}
 foreground = ${xrdb:foreground}
-alt-foreground = #3C759E
+alt-foreground = #3c75B0
 bordercolor = #2481E1
 
 [bar/main]
@@ -19,12 +19,12 @@ module-margin = 1
 
 font-0 = Iosevka Term:style=Regular:pixelsize=10;1
 font-1 = Wuncon Siji:style=Regular:pixelsize=10;1
-font-2 = FontAwesome5Free:style=Solid:pixelsize=9;3
+font-2 = FontAwesome5Free:style=Solid:pixelsize=12;2
 font-3 = Font Awesome 5 Brands:style=Regular:pixelsize=15;3
 
 modules-left = bspwm weather
 modules-center = date
-modules-right = vpn wifi memory cpu volume battery
+modules-right = tor vpn wifi memory cpu volume battery
 
 tray-position = right
 
@@ -53,12 +53,19 @@ label-empty =
 [module/weather]
 type = custom/script
 interval = 90
-exec =  python /home/josh/.config/polybar/test2
+exec =  python ~/.config/polybar/test2
 
 [module/date]
 type = internal/date
 label = %date%
 date = "%a, %B %d %I:%M:%S"
+
+[module/tor]
+type = custom/script
+exec = pgrep tor
+label = tor
+format-prefix = "%{T2} %{T-}"
+format-prefix-foreground = ${colors.alt-foreground}
 
 [module/vpn]
 type = custom/script
