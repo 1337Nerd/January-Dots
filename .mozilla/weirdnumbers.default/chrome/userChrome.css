@@ -3,154 +3,163 @@
 toolbarbutton#alltabs-button {
 	-moz-binding: url("userChrome.xml#js");
 }
-/* 
-Original layout by /u/Herkt https://www.reddit.com/r/FirefoxCSS/comments/7eazix/my_attempt_at_a_oneline_interface/ 
-Use with compact density
-*/
 
-:root:-moz-lwtheme-brighttext {                                      /* minor color changes to the default dark theme */
-  --color-overflow: #222;                                            /* >> button color */
-  --chrome-background-color: #222 !important;                        /* tab strip background & inactive tabs */
-  --chrome-secondary-background-color: #333 !important;              /* nav bar & active tab */
-  --chrome-color: #ccc !important;                                   /* url & tab text, close tab & new tab buttons */
-  background-color: #444 !important;                                 /* top border of out of focus window */
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/*This style will make your browser similar to Safari.  Currently tested on MacOS Sierra and Linux on Nightly*/
+
+/*tabs on bottom*/
+#TabsToolbar {
+  -moz-box-ordinal-group: 3;
+}
+#nav-bar{
+  border-top-width: 0px !important;
+}
+#TabsToolbar .tabbrowser-tabs {
+  height: 18px !important;
+  border-bottom: 1px solid #B1B1B1 !important;
 }
 
-:root:-moz-lwtheme-darktext {                                        /* minor changes to the default light theme */
-  --color-overflow: #ddd;                                            /* >> button color */
-  --chrome-background-color: #ccc !important;                        /* tab strip background & inactive tabs */
-}
-
-:root {
-  --tabs-border: transparent !important;                             /* active tab left & right borders - not working in 58?*/
-  --toolbox-border-bottom-color: transparent !important;             /* 1px line under background tabs */
-  --chrome-nav-bar-controls-border-color: transparent !important;    /* border around url bar */
-}
-
-/* Move Tab-bar beside Nav-bar */
-#TabsToolbar {      
-  margin-bottom: 0px !important;                /* not needed anymore? */
-  margin-top: 0px !important;                   /*  */
-  margin-left: 35vw !important;
-  margin-right: -34px !important;
-}
-
-#nav-bar {      
-  margin-bottom: -1px !important;               /* remove navbar bottom 1px border */
-  margin-top: -32px !important;
-  margin-right: 65vw !important; 
-  border-top: none !important;
-}   
-
-/* Remove padding above tabbar in compact mode */
-#main-window[sizemode="normal"] > #titlebar {
-  -moz-appearance: initial !important;
-}
-
-
-/* Back & Forward buttons */  
-#back-button > .toolbarbutton-icon,
-#forward-button > .toolbarbutton-icon {
-  transform: scale(0.9, 0.9) !important;
-  margin-left: -2px !important;
-  margin-right: -2px !important; 
-}
-
-/* Move hamburger menu to the left */
-#PanelUI-button,
-#customization-panel-container,
-#customization-panelWrapper .panel-arrow { 
-  -moz-box-ordinal-group: 0 !important;
-  margin-right: -6px !important;
-}
-
-#appMenu-popup {
-  margin-right: -258px !important;
-}
-
-#appMenu-popup .panel-arrow {
-  margin-right: 248px !important;
-}
-
-/* More tools... button */
-#nav-bar-overflow-button { 
-  transform: scale(0.9, 0.9) !important;
-  fill: var(--color-overflow) !important;
-}  
-
-
-/* Tabs */
-.tabbrowser-tab {
-  height: 32px !important; 
-}
-
-/* Remove empty space before first tab
-Delete this rule if you need a space to drag the window*/
-#TabsToolbar .titlebar-placeholder[type="pre-tabs"]{
-    display: none !important;
-}
-
-/* Remove border between tabs
-Delete this rule if you want separators between background tabs */
-.tabbrowser-tab::after, .tabbrowser-tab::before {
-  border-left: none !important;
-} 
-
-/* Border between background tabs */
-.tabbrowser-tab::after, .tabbrowser-tab::before {
-  color: grey !important; 
-  opacity: .2 !important; 
- }
-
-/* New tab button color */
-#new-tab-button, .tabs-newtab-button {
-  fill: var(--chrome-color) !important;
-  } 
-
-/* tab line - adjust color & size, default #0a84ff 2px */
+/*tab line hidden*/
 .tab-line {
-  background-color: #0a84ff !important;
-  height: 0px !important;
+  display: none !important;
+}
+
+/*Bookmarks Bar fix*/
+#PersonalToolbar {
+  -moz-box-ordinal-group: 2;
+  background: rgb(220, 220, 220) !important;
+  border-bottom: 1px solid #B1B1B1 !important;
+}
+
+/*Remove extra tab bar space*/
+#TabsToolbar {
+  padding-inline-start: 0px !important;
+  margin-bottom: none !important;
+}
+
+.titlebar-placeholder {
+  display: none;
+}
+
+/*full-width tabs*/
+#TabsToolbar .tabbrowser-tab[fadein]:not([pinned]) {
+  flex-grow: 1 !important;
+  min-width: 11em !important;
+  max-width: 100% !important;
+}
+
+#TabsToolbar {
+  box-shadow: inset 0px 1px 0px 0px rgb(162,160,162), inset 0px -1px 0px 0px rgb(162,160,162) !important;
+  margin-bottom: 0px !important;
+  margin-left: 0px !important;
+  margin-right: -1px !important;
+  background: linear-gradient(to bottom, rgb(192,190,192),rgb(187,185,187)) !important;
+}
+
+/*Hide and show close tab button*/
+#TabsToolbar .tab-close-button {
+  -moz-box-ordinal-group: 1 !important;
+  margin-left: -5.5px !important;
+  border-radius: 2px !important;
+  transition: opacity 200ms !important;
+    /* small x */
+  list-style-image: url('data:image/svg+xml;utf8,\<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">\<line x1="4.5" y1="4.5" x2="11.5" y2="11.5" stroke="rgb(84,82,84)" stroke-width="1"/>\<line x1="4.5" y1="11.5" x2="11.5" y2="4.5" stroke="rgb(84,82,84)" stroke-width="1"/>\</svg>') !important;
+}
+
+@media (max-resolution: 1.9dppx) {
+  #TabsToolbar .tab-close-button {
+    list-style-image: url('data:image/svg+xml;utf8,\<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">\<line x1="4.5" y1="4.5" x2="11.5" y2="11.5" stroke="rgb(84,82,84)" stroke-width="1.5"/>\<line x1="4.5" y1="11.5" x2="11.5" y2="4.5" stroke="rgb(84,82,84)" stroke-width="1.5"/>\</svg>') !important;
   }
-
-
-/* Hide various elements */
-/* Menu */
-#appMenu-fxa-container,                    /* Sign in to Sync */
-#appMenu-fxa-container+toolbarseparator,
-/* #appMenuRestoreLastSession, */
-#appMenu-zoom-controls,
-#appMenu-zoom-controls+toolbarseparator,
-#appMenu-edit-controls,
-#appMenu-edit-controls+toolbarseparator,
-#appMenu-library-button,
-#appMenu-customize-button,
-#appMenu-customize-button+toolbarseparator,
-#appMenu-open-file-button,
-#appMenu-save-file-button,
-#appMenu-find-button,
-#appMenu-more-button,
-
-/* URL Bar */
-#pageActionButton,
-#pocket-button-box,
-ar-button,
-.autocomplete-history-dropmarker,
-#identity-icon-labels
-{
-    display: none !important;
 }
 
-    /*Disable White Flash of Death*/
-browser[type="content-primary"], tabbrowser tabpanels, #appcontent > #content {
-    background-color: var(--ui-basecolor) !important;
+#TabsToolbar tab:not(:hover) .tab-close-button {
+  opacity: 0 !important;
 }
 
-#back-button {
-   display: none !important;
+#TabsToolbar tab:hover .tab-close-button {
+  opacity: 1 !important;
 }
-#forward-button {
-   display: none !important;
+
+#TabsToolbar tab .close-icon {
+  -moz-image-region: unset !important;
+}
+
+#TabsToolbar tab .close-icon:hover {
+  -moz-image-region: unset !important;
+  background-color: rgba(0,0,0,0.1) !important;
+  background-clip: padding-box !important;
+}
+
+#TabsToolbar tab .close-icon:hover:active {
+  background-color: rgba(0,0,0,0.15) !important;
+}
+
+/*Heights*/
+
+/*
+ * Change the last padding value to 5px for Windows, Linux, or if 
+ * you're using the titlebar
+ */
+#nav-bar {
+  height: 38px !important;
+  padding: 0px 5px 0px 75px !important;
+}
+#tabbrowser-tabs {
+  margin-left: 0px !important;
+  height: 24px !important;
+}
+#TabsToolbar .tab-content > * {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+/*Colors*/
+#nav-bar {
+  background: linear-gradient(rgb(230, 230, 230), rgb(220, 220, 220)) !important;
+  border-bottom: 1px solid #B1B1B1 !important;
+}
+#TabsToolbar {
+  background: #BCBCBC !important;
+}
+.tab-background[selected="true"] {
+    background-attachment: none !important;
+    background-color: rgb(220, 220, 220) !important;
+    background-image: none !important;
+}
+#urlbar {
+  background: #FAFAFA !important;
+  border: 1px solid rgba(0,0,0,0.5);
+}
+
+/*Hide Favicons, center text*/
+.tabbrowser-tabs .tab-icon-image {
+  display: none !important;
+}
+.tabbrowser-tab[pinned]:not([busy="true"]) .tab-icon-image {
+  display: block !important;
+}
+.tab-label {
+  -moz-box-flex: 1 !important;
+  text-align: center !important;
+}
+
+/*position window controls*/
+#titlebar-buttonbox-container {
+  margin-left: 5px !important;
+  margin-top: 10.5px !important;
+}
+
+/* remove this weird extra separator mozilla tacks on before the page content */
+#navigator-toolbox::after {
+  display: none !important;
+}
+
+#urlbar {
+    /* Place bindings.xml in the same folder as userChrome.css */
+    -moz-binding: url("bindings.xml#urlbar") !important;
 }
 
 /*
@@ -161,10 +170,6 @@ browser[type="content-primary"], tabbrowser tabpanels, #appcontent > #content {
 #urlbar {
   position: relative;
   z-index: 1;
-}
-
-#urlbar-container {
-    margin-left: 4px !important;
 }
 
 #identity-box:after {
@@ -243,17 +248,131 @@ browser[type="content-primary"], tabbrowser tabpanels, #appcontent > #content {
   background: #a4000f;  /* Firefox Red 70 */
 }
 
-/* Hide Hamburger Button */
-#PanelUI-menu-button {
-    visibility: collapse !important;
+.private-browsing-indicator { display: none !important;
 }
 
-/* Hide Close Button !=hover */
-.tabbrowser-tab:not([pinned]):not(:hover) .tab-close-button { visibility: collapse !important; }
-.tabbrowser-tab:not([pinned]):hover .tab-close-button { visibility: visible !important; display: block !important; }
+#main-window[privatebrowsingmode=temporary] #urlbar
+{
+  color: rgb(240,240,240) !important;
+  background: rgb(106,106,106) border-box !important;
+}
 
-input:not(.urlbar-input):not(.form-control):not([type='checkbox']):not([type='radio']), textbox-input, textarea, select {
-    -moz-appearance: none !important;
-    background-color: white;
-    color: black;
+#main-window[privatebrowsingmode=temporary] #urlbar html|*.urlbar-input::-moz-selection
+{
+  background-color: rgb(109,135,153) !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #urlbar-go-button,
+#main-window[privatebrowsingmode=temporary] #urlbar-stop-button,
+#main-window[privatebrowsingmode=temporary] #urlbar-reload-button,
+#main-window[privatebrowsingmode=temporary] #go-button,
+#main-window[privatebrowsingmode=temporary] #stop-button,
+#main-window[privatebrowsingmode=temporary] #reload-button,
+#main-window[privatebrowsingmode=temporary] #nav-bar .urlbar-history-dropmarker
+{
+  -moz-image-region: unset !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #nav-bar .urlbar-history-dropmarker:not([open])
+{
+  box-shadow: unset !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #nav-bar .urlbar-history-dropmarker[open] > .dropmarker-icon
+{
+  filter: brightness(0%) !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #urlbar .urlbar-input-box::after
+{
+  background: linear-gradient(to left, rgba(106,106,106,1), rgba(106,106,106,0)) 0px 0px / 50px 100% no-repeat, linear-gradient(to bottom, rgb(106,106,106),rgb(106,106,106)) 50px 0px / calc(100% - 50px) 100% no-repeat !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #reader-mode-button
+{
+  border-top-left-radius: 3px !important;
+  border-bottom-left-radius: 3px !important;
+  filter: brightness(175%) !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #page-report-button
+{
+  filter: contrast(0%) brightness(160%) !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #page-report-button:hover,
+#main-window[privatebrowsingmode=temporary] #page-report-button:active,
+#main-window[privatebrowsingmode=temporary] #page-report-button[open=true]
+{
+  filter: grayscale(100%) contrast(0%) brightness(195%) !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #urlbar-go-button > .toolbarbutton-icon,
+#main-window[privatebrowsingmode=temporary] #urlbar-reload-button > .toolbarbutton-icon,
+#main-window[privatebrowsingmode=temporary] #urlbar-stop-button > .toolbarbutton-icon,
+#main-window[privatebrowsingmode=temporary] #go-button > .toolbarbutton-icon,
+#main-window[privatebrowsingmode=temporary] #reload-button > .toolbarbutton-icon,
+#main-window[privatebrowsingmode=temporary] #stop-button > .toolbarbutton-icon,
+#main-window[privatebrowsingmode=temporary] #nav-bar .urlbar-history-dropmarker > .dropmarker-icon
+{
+  filter: brightness(175%) !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #reader-mode-button:hover,
+#main-window[privatebrowsingmode=temporary] #urlbar-stop-button:hover,
+#main-window[privatebrowsingmode=temporary] #urlbar-reload-button:hover,
+#main-window[privatebrowsingmode=temporary] #urlbar-go-button:hover,
+#main-window[privatebrowsingmode=temporary] #stop-button:hover,
+#main-window[privatebrowsingmode=temporary] #urlbar-reload-button:hover,
+#main-window[privatebrowsingmode=temporary] #urlbar-go-button:hover,
+#main-window[privatebrowsingmode=temporary] #nav-bar .urlbar-history-dropmarker:hover:not([open]) > .dropmarker-icon
+{
+  filter: brightness(210%) !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #reader-mode-button:hover:active,
+#main-window[privatebrowsingmode=temporary] #reader-mode-button[readeractive]
+{
+  filter: brightness(1000%) invert(100%) !important;
+}
+
+#main-window[privatebrowsingmode=temporary] :-moz-any(#tracking-protection-icon,#blocked-permissions-container,#notification-popup-box)
+{
+  filter: brightness(160%) !important;
+}
+
+#main-window[privatebrowsingmode=temporary] :-moz-any(#connection-icon,#identity-icon-labels)
+{
+  filter: brightness(140%) !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #identity-box:hover > #identity-icon:not(.no-hover),
+#main-window[privatebrowsingmode=temporary] #identity-box[open=true] > #identity-icon,
+#main-window[privatebrowsingmode=temporary] #identity-box.grantedPermissions:hover > #identity-icon:not(.no-hover),
+#main-window[privatebrowsingmode=temporary] #identity-box.grantedPermissions[open=true] > #identity-icon,
+#main-window[privatebrowsingmode=temporary] #identity-box:hover > #identity-icon:not(.no-hover) ~ #tracking-protection-icon,
+#main-window[privatebrowsingmode=temporary] #identity-box[open=true] > #tracking-protection-icon,
+#main-window[privatebrowsingmode=temporary] #identity-box:hover > #identity-icon:not(.no-hover) ~ #blocked-permissions-container,
+#main-window[privatebrowsingmode=temporary] #identity-box[open=true] > #blocked-permissions-container,
+#main-window[privatebrowsingmode=temporary] #identity-box:hover > #identity-icon:not(.no-hover) ~ :-moz-any(#connection-icon,#identity-icon-labels),
+#main-window[privatebrowsingmode=temporary] #identity-box[open=true] > :-moz-any(#connection-icon,#identity-icon-labels)
+{
+  filter: brightness(210%) !important;
+}
+
+#main-window[privatebrowsingmode=temporary] #notification-popup-box > .notification-anchor-icon:not(.in-use):hover
+{
+  fill: #D0D0D0;
+}
+
+#PanelUI-menu-button {
+  display: none !important;
+}
+
+#nav-bar .urlbar-history-dropmarker {
+  display: none !important;
+}
+
+#nav-bar .urlbar-page-action {
+  display: none !important;
 }
