@@ -156,14 +156,6 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
 	light -U 3
 
-# Start Forge
-super + shift + f
-	/home/josh/forge.sh
-
-# Start Sling
-super + shift + s
-	cd /home/josh/sling; ./sling; cd 
-
 # Screenshot
 Print
 	ffmpeg -loglevel quiet -y -s 1366x768 -f x11grab -i $DISPLAY -vframes 1 ~/Pictures/"$(date)".png
