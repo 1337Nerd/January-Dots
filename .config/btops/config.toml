@@ -10,28 +10,16 @@ constant = ""
 "" = ["Firefox Developer Edition"]
 
 [[names.classified]]
-"" = ["Hexchat"]
-
-[[names.classified]]
-"" = ["Code"]
-
-[[names.classified]]
 "" = ["Mate-terminal"]
 
 [[names.classified]]
 "" = ["Thunar"]
 
 [[names.classified]]
-"" = ["Xfce4-taskmanager"]
-
-[[names.classified]]
-"" = ["Mousepad"]
-
-[[names.classified]]
 "" = ["qutebrowser"]
 
 [[names.classified]]
-"" = ["Qalculate-gtk", "Gnome-calculator"]
+"" = ["Gnome-calculator"]
 
 [[names.classified]]
 "" = ["forge-view-Main"]
