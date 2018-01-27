@@ -4,22 +4,22 @@ remove-empty = true
 renamers = ["classified", "client", "constant"]
 
 [names]
-constant = ""
+constant = "  "
 
 [[names.classified]]
-"" = ["Firefox Developer Edition"]
+"  " = ["Firefox Developer Edition"]
 
 [[names.classified]]
-"" = ["Mate-terminal"]
+"  " = ["Mate-terminal"]
 
 [[names.classified]]
-"" = ["Thunar"]
+"  " = ["Thunar"]
 
 [[names.classified]]
-"" = ["qutebrowser"]
+"  " = ["qutebrowser"]
 
 [[names.classified]]
-"" = ["Gnome-calculator"]
+"  " = ["Gnome-calculator"]
 
 [[names.classified]]
-"" = ["forge-view-Main"]
+"  " = ["forge-view-Main"]
