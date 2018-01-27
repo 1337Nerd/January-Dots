@@ -146,7 +146,7 @@ XF86AudioMute
 
 # Locks screen
 super + shift + e
-	i3lock -i ~/Downloads/rsz_j8i613q.jpg --radius=200 --indpos="683:355" --ringcolor 00000000 --insidecolor=00000000 --separatorcolor=00000000 --ringvercolor=ffffffff --ringwrongcolor=ffffffff --veriftext="" --wrongtext="" --line-uses-inside --insidevercolor=00000000 --insidewrongcolor=d23c3dff --ring-width=3
+	lock
 
 # Raises brightness
 XF86MonBrightnessUp
@@ -155,6 +155,10 @@ XF86MonBrightnessUp
 # Lowers Brightness
 XF86MonBrightnessDown
 	light -U 3
+
+# Start Forge
+super + shift + f
+	/home/josh/forge.sh
 
 # Screenshot
 Print
