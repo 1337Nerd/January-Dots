@@ -1,4 +1,8 @@
 # January-Dots
+Icon theme: La Capitaine
+
+GTK theme: OSX-Arc-Plus
+
 Polybar in part by Github users <a href="https://github.com/dracaether">dracaether</a>, <a href="https://github.com/VivaCaligula">VivaCaligula</a>, and <a href="https://www.reddit.com/user/isurvived12">isurvived12</a> with a few things I added.
 
 Ricing for bspwm inspired by reddit user <a href="https://www.reddit.com/user/gamehelp16">gamehelp16</a>.
