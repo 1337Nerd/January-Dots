@@ -105,7 +105,7 @@ toolbarbutton#alltabs-button {
  */
 #nav-bar {
   height: 38px !important;
-  padding: 0px 5px 0px 75px !important;
+  padding: 0px 5px !important;
 }
 #tabbrowser-tabs {
   margin-left: 0px !important;
@@ -375,4 +375,8 @@ toolbarbutton#alltabs-button {
 
 #nav-bar .urlbar-page-action {
   display: none !important;
+}
+
+#urlbar:not([focused]) .urlbar-input-box {
+    text-align: center;
 }
