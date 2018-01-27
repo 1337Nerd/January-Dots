@@ -1,51 +1,51 @@
 ! special
-*.foreground:   #b3d5da
-*.background:   #14051a
+*.foreground:   #000000
+*.background:   #e4e4e4
 
 ! black
-*.color0:       #262626
-*.color8:       #262626
+*.color0:       #000000
+*.color8:       #555753
 
 ! red
-*.color1:       #cf4134
-*.color9:       #cf4134
+*.color1:       #CC0000
+*.color9:       #EF2929
 
 ! green
-*.color2:       #79e513
-*.color10:      #79e513
+*.color2:       #4E9A06
+*.color10:      #8AE234
 
 ! yellow
-*.color3:       #edf630
-*.color11:      #edf630
+*.color3:       #C4A000
+*.color11:      #FCE94F
 
 ! blue
-*.color4:       #49bbfb
-*.color12:      #49bbfb
+*.color4:       #3465A4
+*.color12:      #729FCF
 
 ! magenta
-*.color5:       #cb1ed1
-*.color13:      #fd28ff
+*.color5:       #75507B
+*.color13:      #AD7FA8
 
 ! cyan
-*.color6:       #0dcdcd
-*.color14:      #14ffff
+*.color6:       #06989A
+*.color14:      #34E2E2
 
 ! white
-*.color7:       #c7c7c7
-*.color15:      #c7c7c7
+*.color7:       #D3D7CF
+*.color15:      #EEEEEC
 
 !############
 !##  rofi  ##
 !############
 
 !                  bg       border   separator
-rofi.color-window: #14051a, #14051a, #14051a
+rofi.color-window: #e4e4e4, #e4e4e4, #e4e4e4
 !                  bg       fg       bg-alt   hl-bg    hl-fg
-rofi.color-normal: #14051a, #b3d5da, #14051a, #14051a, #ffffff
-rofi.color-active: #14051a, #b3d5da, #14051a, #14051a, #ffffff
-rofi.color-urgent: #14051a, #b3d5da, #14051a, #14051a, #ffffff
+rofi.color-normal: #e4e4e4, #000000, #e4e4e4, #000000, #e4e4e4
+rofi.color-active: #e4e4e4, #000000, #e4e4e4, #000000, #e4e4e4
+rofi.color-urgent: #e4e4e4, #000000, #e4e4e4, #000000, #e4e4e4
 
 rofi.lines: 		  	5
-rofi.font: 			  	Iosevka 15
+rofi.font:				SFNS Display 15
 rofi.padding: 			5
 rofi.fixed-num-lines: 	false
