@@ -15,11 +15,11 @@ bspc config urgent_border_color "#72003e"
 
 xsetroot -cursor_name left_ptr &
 redshift -l 39.866397:-83.074054 &
-feh --bg-fill ~/Downloads/SHo6M7t.jpg
+feh --bg-fill ~/Downloads/macOS-Sierra-Wallpaper-Macbook-Wallpaper.jpg
 btops &
 polybar main &
 light -S 8 &
-xss-lock -- i3lock -i ~/Downloads/rsz_j8i613q.jpg --radius=200 --indpos="683:355" --ringcolor 00000000 --insidecolor=00000000 --separatorcolor=00000000 --ringvercolor=ffffffff --ringwrongcolor=ffffffff --veriftext="" --wrongtext="" --line-uses-inside --insidevercolor=00000000 --insidewrongcolor=d23c3dff --ring-width=3
+xss-lock -- lock
 
 xrdb -I$HOME ~/.Xresources
 
