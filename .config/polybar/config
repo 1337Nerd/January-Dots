@@ -1,30 +1,21 @@
-[colors]
-background = ${xrdb:background}
-foreground = ${xrdb:foreground}
-alt-foreground = #3c75B0
-bordercolor = #2481E1
-
 [bar/main]
 monitor = LVDS-1
 
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-border-bottom-size = 2
-border-bottom-color = ${colors.bordercolor}
+background = #E8E8E8
+foreground = #000000
 
 height = 30
 padding-right = 1
 module-margin = 1
 
-font-0 = Iosevka Term:style=Regular:pixelsize=10;1
+font-0 = System San Francisco Display Regular.ttf: SFNS Display:style=Regular:pixelsize=10;1
 font-1 = Wuncon Siji:style=Regular:pixelsize=10;1
 font-2 = FontAwesome5Free:style=Solid:pixelsize=12;2
 font-3 = Font Awesome 5 Brands:style=Regular:pixelsize=15;3
 
-modules-left = bspwm weather
-modules-center = date
-modules-right = tor vpn wifi memory cpu volume battery
+modules-left = bspwm
+modules-center = weather
+modules-right = tor vpn wifi memory cpu volume battery date
 
 tray-position = right
 
@@ -37,7 +28,7 @@ enable-scroll = false
 ws-icon-default = o
 
 label-focused = %name%
-label-focused-background = ${colors.bordercolor}
+label-focused-background = #0F72F4
 label-focused-foreground = #eee
 label-focused-padding = 2
 
@@ -53,26 +44,19 @@ label-empty =
 [module/weather]
 type = custom/script
 interval = 90
-exec =  python ~/.config/polybar/test2
-
-[module/date]
-type = internal/date
-label = %date%
-date = "%a, %B %d %I:%M:%S"
+exec = python ~/.config/polybar/test2
 
 [module/tor]
 type = custom/script
 exec = pgrep tor
 label = tor
 format-prefix = "%{T2} %{T-}"
-format-prefix-foreground = ${colors.alt-foreground}
 
 [module/vpn]
 type = custom/script
 exec = pgrep openvpn
 label = vpn
 format-prefix = "%{T2} %{T-}"
-format-prefix-foreground = ${colors.alt-foreground}
 
 [module/wifi]
 type = internal/network
@@ -82,46 +66,37 @@ format-connected = <ramp-signal> <label-connected>
 label-connected = %local_ip%
 
 ramp-signal-0 = "%{T2}%{T-}"
-ramp-signal-foreground = ${colors.alt-foreground}
 
 [module/memory]
 type = internal/memory
 label = %gb_used%
 format-prefix = "%{T2} %{T-}"
-format-prefix-foreground = ${colors.alt-foreground}
 
 [module/cpu]
 type = internal/cpu
 format-prefix = "%{T2} %{T-}"
-format-prefix-foreground = ${colors.alt-foreground}
 
 [module/volume]
 type= internal/volume
 format-volume = <ramp-volume><label-volume>
 
 label-muted = "%{T2}%{T-}"
-label-muted-foreground = ${colors.alt-foreground}
 
 ramp-volume-0 = "%{T2} %{T-}"
 ramp-volume-1 = "%{T2} %{T-}"
 ramp-volume-2 = "%{T2} %{T-}"
-ramp-volume-foreground = ${colors.alt-foreground}
 
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = ADP1
 
-format-charging =  <animation-charging> <label-charging>
-label-charging = %percentage%%
+format-charging = <animation-charging>
 
-format-discharging =  <ramp-capacity> <label-discharging>
-label-discharging = %percentage%%
+format-discharging =  <ramp-capacity>
 
-format-full = <ramp-capacity> <label-full>
-label-full = %percentage%%
+format-full = <ramp-capacity>
 
-ramp-capacity-foreground = ${colors.alt-foreground}
 ramp-capacity-0 = "%{T2}%{T-}"
 ramp-capacity-1 = "%{T2}%{T-}"
 ramp-capacity-2 = "%{T2}%{T-}"
@@ -141,7 +116,11 @@ animation-charging-5 = "%{T2}%{T-}"
 animation-charging-6 = "%{T2}%{T-}"
 animation-charging-7 = "%{T2}%{T-}"
 
-animation-charging-foreground = ${colors.alt-foreground}
 animation-charging-framerate = 250
+
+[module/date]
+type = internal/date
+label = %date%
+date = "%a %I:%M %p"
 
 ; vim:ft=dosini
