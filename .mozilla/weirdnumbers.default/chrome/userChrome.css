@@ -44,6 +44,12 @@ toolbarbutton#alltabs-button {
   display: none;
 }
 
+/*  .tab-line[selected="true"] {filter:grayscale(100%)} */
+ 
+toolbarbutton.webextension-browser-action {
+  filter: grayscale(90%);
+}
+
 /*full-width tabs*/
 #TabsToolbar .tabbrowser-tab[fadein]:not([pinned]) {
   flex-grow: 1 !important;
