@@ -7,16 +7,13 @@ renamers = ["classified", "client", "constant"]
 constant = "  "
 
 [[names.classified]]
-"  " = ["Firefox Developer Edition"]
+"  " = ["Firefox Developer Edition", "Waterfox"]
 
 [[names.classified]]
 "  " = ["Mate-terminal"]
 
 [[names.classified]]
 "  " = ["Thunar"]
-
-[[names.classified]]
-"  " = ["qutebrowser"]
 
 [[names.classified]]
 "  " = ["Gnome-calculator"]
