@@ -18,7 +18,7 @@ redshift -l 39.866397:-83.074054 &
 feh --bg-fill ~/Downloads/macOS-Sierra-Wallpaper-Macbook-Wallpaper.jpg
 btops &
 polybar main &
-light -S 8 &
+light -S 2 &
 xss-lock -- lock
 
 xrdb -I$HOME ~/.Xresources
