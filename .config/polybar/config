@@ -15,7 +15,7 @@ font-3 = Font Awesome 5 Brands:style=Regular:pixelsize=15;3
 
 modules-left = bspwm
 modules-center = weather
-modules-right = tor vpn wifi memory cpu volume battery date
+modules-right = vpn wifi memory cpu volume battery date
 
 tray-position = right
 
@@ -29,7 +29,7 @@ ws-icon-default = o
 
 label-focused = %name%
 label-focused-background = #0F72F4
-label-focused-foreground = #eee
+label-focused-foreground = ${bar/main.background}
 label-focused-padding = 2
 
 label-occupied = %name%
@@ -45,12 +45,6 @@ label-empty =
 type = custom/script
 interval = 90
 exec = python ~/.config/polybar/test2
-
-[module/tor]
-type = custom/script
-exec = pgrep tor
-label = tor
-format-prefix = "%{T2} %{T-}"
 
 [module/vpn]
 type = custom/script
@@ -90,10 +84,11 @@ ramp-volume-2 = "%{T2} %{T-}"
 type = internal/battery
 battery = BAT0
 adapter = ADP1
+full-at = 95
 
 format-charging = <animation-charging>
 
-format-discharging =  <ramp-capacity>
+format-discharging = <ramp-capacity>
 
 format-full = <ramp-capacity>
 
