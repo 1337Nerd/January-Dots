@@ -1,7 +1,7 @@
 # January-Dots
-Icon theme: La Capitaine
+Icon theme: <a href="https://github.com/keeferrourke/la-capitaine-icon-theme">La Capitaine</a>
 
-GTK theme: OSX-Arc-Plus
+GTK theme: <a href="https://github.com/LinxGem33/OSX-Arc-Plus">OSX-Arc-Plus</a>
 
 Polybar in part by Github users <a href="https://github.com/dracaether">dracaether</a>, <a href="https://github.com/VivaCaligula">VivaCaligula</a>, and <a href="https://www.reddit.com/user/isurvived12">isurvived12</a> with a few things I added.
 
